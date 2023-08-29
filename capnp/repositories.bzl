@@ -1,4 +1,6 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "new_git_repository")
+
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 load("//capnp/internal:capnp_lang_toolchain_gen.bzl", "capnp_lang_toolchain_gen")
 load("//capnp/internal:capnp_toolchain_gen.bzl", "capnp_toolchain_gen")
@@ -17,16 +19,11 @@ load(
 
 def capnp_dependencies():
     maybe(
-        http_archive,
+        new_git_repository,
         name = "capnproto",
         build_file = "@rules_capnproto//third_party/capnproto:BUILD.capnp.bazel",
-        sha256 = "a156efe56b42957ea2d118340d96509af2e40c7ef8f3f8c136df48001a5eb2ac",
-        strip_prefix = "capnproto-0.9.0",
-        urls = [
-            # TODO(kgreenek): Mirror this somewhere in case github is down.
-            # Ideally mirror.bazel.build (ping @philwo on github).
-            "https://github.com/capnproto/capnproto/archive/refs/tags/v0.9.0.tar.gz",
-        ],
+        remote = "https://github.com/asa/capnproto.git",
+        commit = "c6fb91adb36c473b0965198afdf8e944cb8a1321", # the no_bazel branch.
     )
 
     maybe(

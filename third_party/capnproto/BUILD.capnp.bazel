@@ -601,6 +601,7 @@ capnroto_cc_library(
         "c++/src/kj/async-queue.h",
         "c++/src/kj/async-unix.h",
         "c++/src/kj/async-win32.h",
+        "c++/src/kj/cidr.h",
         "c++/src/kj/timer.h",
     ],
     visibility = ["//visibility:public"],
