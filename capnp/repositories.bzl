@@ -23,8 +23,15 @@ def capnp_dependencies():
         name = "capnproto",
         build_file = "@rules_capnproto//third_party/capnproto:BUILD.capnp.bazel",
         remote = "https://github.com/asa/capnproto.git",
-        commit = "c6fb91adb36c473b0965198afdf8e944cb8a1321", # the no_bazel branch.
+        commit = "af521f85799f89bf1b0ee280fb1ecb1366b8833e", # the no_bazel branch.
+
     )
+    #maybe(
+    #    native.new_local_repository,
+    #    name = "capnproto",
+    #    build_file = "@rules_capnproto//third_party/capnproto:BUILD.capnp.bazel",
+    #    path = "/home/asa/sbox/capnproto",
+    #)
 
     maybe(
         http_archive,
